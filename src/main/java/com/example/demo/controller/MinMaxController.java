@@ -19,7 +19,7 @@ public class MinMaxController {
         this.visitorService = visitorService;
     }
 	
-	@GetMapping("/minimal-total")
+    @GetMapping("/minimal-total")
     public ResponseEntity<Double> getMinimalTotal() {
         double minimalTotal = visitorService.calculateMinimalTotal();
         return ResponseEntity.ok(minimalTotal);
@@ -29,5 +29,10 @@ public class MinMaxController {
     public ResponseEntity<Double> getMaximalTotal() {
         double maximalTotal = visitorService.calculateMaximalTotal();
         return ResponseEntity.ok(maximalTotal);
+    }
+    @GetMapping("/total")
+    public ResponseEntity<Double> getTotal() {
+    	double total = visitorService.calculateTotal();
+    	return ResponseEntity.ok(total);
     }
 }

@@ -33,4 +33,10 @@ public class VisitorService {
                 .max()
                 .orElse(0.0);
     }
+    public double calculateTotal() {
+    	List<Visitor> allVisitors = visitorRepository.findAll();
+    	return allVisitors.stream()
+    			.mapToDouble(visitor -> visitor.getNumberOfDay() * visitor.getPrice())
+    			.sum();
+    }
 }

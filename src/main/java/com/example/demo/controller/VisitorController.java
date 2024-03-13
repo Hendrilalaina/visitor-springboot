@@ -60,4 +60,8 @@ public class VisitorController {
 
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/{id}")
+    public Optional<Visitor> getVisitor(@PathVariable Long id) {
+        return visitorRepository.findById(id);
+    }
 }
