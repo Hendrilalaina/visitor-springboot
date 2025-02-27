@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/visitors")
@@ -29,7 +30,7 @@ public class VisitorController {
         return visitorRepository.save(visitor);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Visitor> updateVisitor(@PathVariable Long id, @RequestBody Visitor updatedVisitor) {
+    public ResponseEntity<Visitor> updateVisitor(@PathVariable UUID id, @RequestBody Visitor updatedVisitor) {
         Optional<Visitor> existingVisitor = visitorRepository.findById(id);
 
         if (existingVisitor.isEmpty()) {
@@ -48,7 +49,7 @@ public class VisitorController {
         return ResponseEntity.ok(visitorToUpdate);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteVisitor(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteVisitor(@PathVariable UUID id) {
         Optional<Visitor> existingVisitor = visitorRepository.findById(id);
 
         if (existingVisitor.isEmpty()) {
@@ -61,7 +62,7 @@ public class VisitorController {
         return ResponseEntity.noContent().build();
     }
     @GetMapping("/{id}")
-    public Optional<Visitor> getVisitor(@PathVariable Long id) {
+    public Optional<Visitor> getVisitor(@PathVariable UUID id) {
         return visitorRepository.findById(id);
     }
 }
